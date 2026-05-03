@@ -18,9 +18,33 @@
     .card{width:min(920px,100%); max-height:92vh; overflow:auto; background:var(--glass); backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,.7); border-radius:32px; padding:clamp(22px,5vw,52px); box-shadow:var(--shadow); text-align:center; animation:pop .45s ease both; position:relative}
     @keyframes pop{from{opacity:0; transform:translateY(18px) scale(.98)}to{opacity:1; transform:none}}
     h1{font-size:clamp(2rem,8vw,4.8rem); line-height:1.03; color:var(--wine); margin:0 0 18px} h2{font-size:clamp(1.8rem,7vw,4rem); color:var(--wine); margin:0 0 18px}.lead{font-size:clamp(1.25rem,4vw,2.2rem); line-height:1.35; font-weight:800; color:#7f1d1d}.small{font-size:1rem; opacity:.75}.photo{width:100%; max-width:620px; max-height:56vh; object-fit:cover; border-radius:26px; box-shadow:0 18px 44px rgba(0,0,0,.22); border:8px solid rgba(255,255,255,.72); margin-top:18px}.photo.tall{max-width:480px}.btn{appearance:none; border:0; border-radius:999px; padding:15px 25px; margin:18px 8px 0; background:linear-gradient(135deg,var(--rose),var(--pink)); color:white; font-weight:900; font-size:1.05rem; cursor:pointer; box-shadow:0 12px 24px rgba(244,114,182,.35); transition:.18s transform,.18s filter}.btn:hover{transform:translateY(-2px); filter:saturate(1.15)}.ghost{background:rgba(255,255,255,.75); color:var(--wine); border:1px solid rgba(131,24,67,.14)}.options{display:grid; gap:14px; max-width:660px; margin:24px auto 0}.option{border:2px solid rgba(131,24,67,.15); background:rgba(255,255,255,.82); border-radius:20px; padding:17px 20px; font-size:clamp(1.05rem,3vw,1.35rem); font-weight:850; cursor:pointer; text-align:left; transition:.18s}.option:hover{transform:translateX(4px); border-color:var(--pink); background:#fff}.error{min-height:34px; margin-top:16px; font-weight:900; color:#be123c; font-size:1.15rem}.shake{animation:shake .35s ease}@keyframes shake{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(4px)}30%,50%,70%{transform:translateX(-7px)}40%,60%{transform:translateX(7px)}}.topbar{position:fixed; top:12px; left:12px; right:12px; display:flex; justify-content:space-between; align-items:center; z-index:5; pointer-events:none}.pill{pointer-events:auto; background:rgba(255,255,255,.7); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,.8); padding:10px 14px; border-radius:999px; font-weight:900; color:var(--wine); box-shadow:0 8px 24px rgba(0,0,0,.08)}.hearts{position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:-1}.heart{position:absolute; bottom:-40px; font-size:28px; animation:float 5.5s linear forwards; opacity:.75}@keyframes float{to{transform:translateY(-110vh) rotate(22deg); opacity:0}}.grid4{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin-top:22px}.spoiler{background:#fff; border-radius:24px; padding:10px; box-shadow:0 14px 32px rgba(0,0,0,.12)}.spoiler svg{width:100%; height:220px; display:block; border-radius:18px}.calendar svg{max-width:560px; width:100%; border-radius:24px; box-shadow:0 14px 34px rgba(0,0,0,.16); background:white}.secretInput{width:min(520px,100%); padding:16px 18px; border-radius:999px; border:2px solid rgba(131,24,67,.18); background:rgba(255,255,255,.9); font-size:1.08rem; text-align:center; font-weight:850; outline:none; box-shadow:0 10px 26px rgba(244,114,182,.12)}.secretInput:focus{border-color:var(--pink); box-shadow:0 0 0 6px rgba(244,114,182,.18)}.bigLove{font-size:clamp(3rem,14vw,8rem); line-height:.9; margin:14px 0 10px; font-weight:1000; letter-spacing:.02em; color:#be123c; text-shadow:0 8px 24px rgba(244,114,182,.35); animation:lovePulse 1.4s ease-in-out infinite alternate}.finalSparkle{position:absolute; inset:0; pointer-events:none; overflow:hidden; border-radius:32px}.spark{position:absolute; font-size:24px; animation:sparkle 1.6s ease-out forwards}@keyframes lovePulse{from{transform:scale(.96); filter:saturate(1)}to{transform:scale(1.04); filter:saturate(1.5)}}@keyframes sparkle{0%{transform:translateY(20px) scale(.4) rotate(0deg); opacity:0}30%{opacity:1}100%{transform:translateY(-130px) scale(1.25) rotate(30deg); opacity:0}}@media(max-width:680px){.grid4{grid-template-columns:1fr}.card{border-radius:24px}.spoiler svg{height:190px}.topbar{top:8px}.pill{font-size:.85rem}.photo{max-height:48vh}}
-  </style>
+  
+.date-fixed {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  background: rgba(255,255,255,.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.8);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 900;
+  color: #831843;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  z-index: 9999;
+  font-size: 14px;
+  animation: fadeInDate 1.2s ease;
+}
+
+@keyframes fadeInDate {
+  from {opacity:0; transform: translateY(-10px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+</style>
 </head>
 <body>
+<div class="date-fixed">4 maggio 2026</div>
 <div class="mountains"></div><div class="hearts" id="hearts"></div>
 <div class="topbar"><div class="pill" id="counter">5° anniversario ❤</div><button class="pill" id="musicBtn">🎵 musica</button></div>
 <main class="app"><section class="card" id="card"></section></main>
@@ -69,4 +93,3 @@ function spoilerSvgs(){return [
 let audioCtx=null, nodes=[]; document.getElementById('musicBtn').onclick=()=>{if(audioCtx){nodes.forEach(n=>n.stop&&n.stop()); audioCtx.close(); audioCtx=null; nodes=[]; musicBtn.textContent='🎵 musica'; return} audioCtx=new (window.AudioContext||window.webkitAudioContext)(); const gain=audioCtx.createGain(); gain.gain.value=.045; gain.connect(audioCtx.destination); [261.63,329.63,392.00].forEach((f,idx)=>{const o=audioCtx.createOscillator(); const g=audioCtx.createGain(); o.type='sine'; o.frequency.value=f; g.gain.value=.35; o.connect(g); g.connect(gain); o.start(audioCtx.currentTime+idx*.08); nodes.push(o)}); musicBtn.textContent='⏸ pausa musica'};
 render(); setInterval(()=>burst(1),2600);
 </script></body></html>
-
