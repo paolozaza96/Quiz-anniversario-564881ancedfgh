@@ -69,3 +69,4 @@ function spoilerSvgs(){return [
 let audioCtx=null, nodes=[]; document.getElementById('musicBtn').onclick=()=>{if(audioCtx){nodes.forEach(n=>n.stop&&n.stop()); audioCtx.close(); audioCtx=null; nodes=[]; musicBtn.textContent='🎵 musica'; return} audioCtx=new (window.AudioContext||window.webkitAudioContext)(); const gain=audioCtx.createGain(); gain.gain.value=.045; gain.connect(audioCtx.destination); [261.63,329.63,392.00].forEach((f,idx)=>{const o=audioCtx.createOscillator(); const g=audioCtx.createGain(); o.type='sine'; o.frequency.value=f; g.gain.value=.35; o.connect(g); g.connect(gain); o.start(audioCtx.currentTime+idx*.08); nodes.push(o)}); musicBtn.textContent='⏸ pausa musica'};
 render(); setInterval(()=>burst(1),2600);
 </script></body></html>
+
